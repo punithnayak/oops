@@ -1,71 +1,70 @@
-
 import java.util.Scanner;
-class Operation{
-	int[] InsertElement(int array[],int n,int pos,int newElement){
+
+class array{
+	void delete(int a[],int n,int pos){
 		int i;
- 		
-    	
-        int newarr[] = new int[n + 1];
- 
-     
-        for (i = 0; i < n + 1; i++) {
-            if (i < pos - 1)
-                newarr[i] = array[i];
-            else if (i == pos - 1)
-                newarr[i] = newElement;
-            else
-                newarr[i] = array[i - 1];
-        }
-        return newarr;
-    }
-	
-
-	void DeleteElement(int array[],int n,int pos){
-		for (int i=pos;i<=n ;i++ ) {
-
-			array[i]=array[i+1];
-			
-			
+		pos=pos-1;
+		for(i=pos;i<n;i++){
+			a[i]=a[i+1];
 		}
-
+		System.out.println("New array is :");
+			for(i=0;i<n-1;i++){
+					System.out.println(a[i]);
+			}       
 	}
 
+	void insert(int a[],int n,int pos,int x){
+		int i;
+		int temp[]=new int[50];
+
+		for(i=0;i<n+1;i++){
+			if (i < pos - 1)
+                temp[i] = a[i];
+            else if (i == pos - 1)
+                temp[i] = x;
+            else
+                temp[i] = a[i - 1];
+		}
+		System.out.println("New array is :");
+			for(i=0;i<n+1;i++){
+					System.out.println(temp[i]);
+			}
+	}
 }
 
+class modarr{
+	public static void main(String[] args){
+		Scanner scan=new Scanner(System.in);
 
-class ArrayOperation{
-	public static void main(String[] args) {
-		System.out.println("Enter the size of the array:");
-		Scanner sc=new Scanner(System.in);
-		int a= sc.nextInt();
-		int[] array =new int[500];
-		System.out.println("Enter the elements:");
-		
-		for (int i=0;i<a ;i++ ) {
-			array[i]=sc.nextInt();
+		int n,i;
+		int arr[]=new int[50];
+		System.out.println("Enter number of elements :");
+		n=scan.nextInt();
 
+		for(i=0;i<n;i++){
+			arr[i]=scan.nextInt();
 		}
-		System.out.println("Enter the postion to be added:");
-		int pos= sc.nextInt();
-		System.out.println("Enter the new element:");
-		int newElement1= sc.nextInt();
-		Operation obj=new Operation();
 
-		System.out.println(obj.InsertElement(array,a,pos,newElement1));
-		System.out.println("newArray:");
-		for (int c=0;c<a ;c++ ) {
-			System.out.println(array[c]);
-			
+		array function=new array();	
+
+		System.out.println("Enter 1 to delete element and 0 to insert element :");
+		int opt=scan.nextInt();
+
+		System.out.println("Enter the position :");
+		int pos=scan.nextInt();
+
+		if(opt==1){
+			function.delete(arr,n,pos);
 		}
-		System.out.println("Enter Element to be deleted ");
-		int delPos= sc.nextInt();
-		;
-		obj.DeleteElement(array,a,delPos);
 
-		System.out.println("newArray:");
-		for (int e=0;e<a ;e++ ) {
-			System.out.println(array[e]);
-			
+		else if(opt==0){
+			System.out.println("Enter element to be inserted :");
+			int x=scan.nextInt();
+			function.insert(arr,n,pos,x);
+		}
+
+		else{
+			System.out.println("Invalid input :");
 		}
 
 	}
