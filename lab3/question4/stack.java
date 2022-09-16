@@ -82,9 +82,3 @@ class Stack
 		}
 	}
 }
-class stack{
-	public static void main(String[] args) {
-		Stack obj=new Stack();
-		obj.push(5);
-	}
-}
